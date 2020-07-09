@@ -14,7 +14,7 @@ public class Song {
     @ColumnInfo(name = "duration")
     private String mDuration;
 
-    
+
     public String getId() {
         return mId;
     }
