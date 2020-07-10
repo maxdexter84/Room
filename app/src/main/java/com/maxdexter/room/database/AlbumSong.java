@@ -5,15 +5,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 //эта анотация связывает между собой по id две таблицы , Album и Song
-@Entity(foreignKeys = {@ForeignKey(entity = Album.class,parentColumns = "id", childColumns = "album id"),
-                        @ForeignKey(entity = Song.class,parentColumns = "id",childColumns = "song id")})
+@Entity(foreignKeys = {@ForeignKey(entity = Album.class,parentColumns = "id", childColumns = "album_id"),
+                        @ForeignKey(entity = Song.class,parentColumns = "id",childColumns = "song_id")})
 public class AlbumSong {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int mId;
-    @ColumnInfo(name = "album Id")
+    @ColumnInfo(name = "album_id")
     private int mAlbumId;
-    @ColumnInfo(name = "song id")
+    @ColumnInfo(name = "song_id")
     private int mSongId;
 
     public AlbumSong(int id, int albumId, int songId) {

@@ -1,5 +1,7 @@
 package com.maxdexter.room.database;
 
+import android.database.Cursor;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,11 +25,16 @@ public interface MusicDao {
     @Query("SELECT * FROM album")
     List<Album> getAlbums();
 
+    @Query("SELECT * FROM album")
+    Cursor getAlbumsCursor();
+    @Query("SELECT * FROM album where id = :id")
+    Cursor getAlbumsItIdCursor(int id);
+
     @Query("SELECT * FROM song")
     List<Song> getSongs();
 
     @Delete
     void deleteAlbum(Album album);
-    @Query("SELECT * FROM song inner join albumsong on song.id = albumsong.`song id` where `album Id` = :albumId")
+    @Query("SELECT * FROM song inner join albumsong on song.id = albumsong.song_id where album_id = :albumId")
     List<Song> getSongsFromAlbums(int albumId);
 }
