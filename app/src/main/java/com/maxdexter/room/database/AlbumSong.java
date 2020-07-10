@@ -2,11 +2,13 @@ package com.maxdexter.room.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-@Entity
+//эта анотация связывает между собой по id две таблицы , Album и Song
+@Entity(foreignKeys = {@ForeignKey(entity = Album.class,parentColumns = "id", childColumns = "album id"),
+                        @ForeignKey(entity = Song.class,parentColumns = "id",childColumns = "song id")})
 public class AlbumSong {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int mId;
     @ColumnInfo(name = "album Id")
@@ -42,5 +44,8 @@ public class AlbumSong {
 
     public void setSongId(int songId) {
         mSongId = songId;
+    }
+
+    public AlbumSong() {
     }
 }
